@@ -28,11 +28,11 @@ export const projects = [
     description: "yeah...still on that shit",
     link: "google.com",
   },
-  {
-    id: 4,
-    img: sample4,
-    title: "kwubaaaayyuu",
-    description: "making some attempts",
-    link: "google.com",
-  },
+//   {
+//     id: 4,
+//     img: sample4,
+//     title: "676877988",
+//     description: "loadng",
+//     link: "google.com",
+//   },
 ];
