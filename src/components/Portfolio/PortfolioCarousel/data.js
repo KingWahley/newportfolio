@@ -24,7 +24,7 @@ export const projects = [
   {
     id: 3,
     img: sample3,
-    title: "kwubaaattt",
+    title: "Art Galleria",
     description: "yeah...still on that shit",
     link: "google.com",
   },

@@ -21,13 +21,13 @@ const Portfolio = () => {
           <Tabs selectedTab={activeTab} onChange={handleChange}>
             <Tab key={1} color="#DE0F0F" label="Websites" value={1} />
             <Tab key={2} color="#DE0F0F" label="Web Applications" value={2} />
-            <Tab
+            {/* <Tab
               key={3}
               color="#DE0F0F"
               label="Mobile Applications"
               value={3}
             />
-            <Tab key={4} color="#DE0F0F" label="Others" value={4} />
+            <Tab key={4} color="#DE0F0F" label="Others" value={4} /> */}
           </Tabs>
           <div>
             <TabPanel value={activeTab} selectedIndex={1}>
@@ -36,12 +36,12 @@ const Portfolio = () => {
             <TabPanel value={activeTab} selectedIndex={2}>
               <ComingSoon />
             </TabPanel>
-            <TabPanel value={activeTab} selectedIndex={3}>
+            {/* <TabPanel value={activeTab} selectedIndex={3}>
               <ComingSoon />
             </TabPanel>
             <TabPanel value={activeTab} selectedIndex={4}>
               <ComingSoon />
-            </TabPanel>
+            </TabPanel> */}
           </div>
         </Container>
       </StyledWrapper>
