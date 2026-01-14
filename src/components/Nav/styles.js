@@ -27,6 +27,7 @@ export const StyledDiv = styled.div`
   align-items: center;
   H3 {
     color: var(--purple);
+    padding: 10px;
   }
 `;
 
@@ -41,42 +42,64 @@ export const StyledLogo = styled.div`
 `;
 
 export const StyledNav = styled.nav`
-  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 120px;
-  width: 250px;
-  font-family: var(--font-stack-4);
-  text-transform: capitalize;
-  font-size: 0.8em;
-  margin-top: -20px;
+  justify-content: center;
+  gap: 48px;
+  width: 100%;
+  padding:30px
 
   a {
     text-decoration: none;
     color: var(--white);
     font-family: var(--font-stack-3);
+    font-size: 1.25rem;
   }
 
-  a:first-child {
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform: translateY(-50%);
+  /* MOBILE */
+  @media (max-width: 1199.99px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70%;
+    background: var(--black-2);
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+
+    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+    transition: transform 0.35s ease;
+    z-index: 9;
+
+    a {
+      font-size: 1.1rem;
+    }
+  }
+`;
+
+export const StyledHamburger = styled.div`
+  position: fixed;
+  top: 24px;
+  right: 24px;
+
+  display: none;
+  width: 34px;
+  height: 24px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 999;
+
+  span {
+    width: 100%;
+    height: 3px;
+    background: var(--purple);
+    border-radius: 2px;
   }
 
-  a:nth-child(2) {
-    position: absolute;
-    top: 50%;
-    right: 0px;
-    transform: translateY(-50%);
-  }
-
-  a:nth-child(3) {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  @media (max-width: 1199.99px) {
+    display: flex;
   }
 `;
 
@@ -95,19 +118,6 @@ export const StyledWheel = styled.div`
     border-radius: 50%;
   }
 `;
-
-// export const StyledPointer = styled.div`
-//         position: absolute;
-//         top: 50%;
-//         left: -30px;
-//         transform: translateY(-50%);
-//         width: 0;
-//         height: 0;
-//         border-right: 20px solid var(--green);
-//         border-top: 5px solid transparent;
-//         border-bottom: 5px solid transparent;
-//         z-index: -2;
-// `
 
 export const StyledPointer = styled.div`
   position: absolute;

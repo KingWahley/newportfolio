@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import {
   StyledWrapper,
@@ -9,6 +10,7 @@ import {
   StyledWheel,
   StyledPointer,
   StyledNavTrigger,
+  StyledHamburger,
 } from "./styles";
 
 import logo from "../../assets/icons/logo.png";
@@ -30,6 +32,9 @@ const Nav = () => {
   const [wheelBorderColor, setWheelBorderColor] = useState();
   const [switchImage, setSwitchImage] = useState(avatar);
   const [showNavWheel, setShowNavWheel] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
+  const toggleNav = () => setNavOpen((prev) => !prev);
 
   const rotateLeft = () => {
     setRotation(0);
@@ -87,37 +92,102 @@ const Nav = () => {
     <StyledWrapper>
       <StyledDiv showNavWheel={showNavWheel}>
         <h3>PETER OLAWALE</h3>
-        <StyledNav>
-          <Link to="/" style={{ color: nav1Color }} onClick={rotateLeft}>
-            about me
-          </Link>
-          <Link
-            to="resources"
-            style={{ color: nav2Color }}
-            onClick={rotateRight}
+
+        <StyledHamburger onClick={toggleNav} aria-label="Toggle menu">
+          <motion.svg
+            viewBox="0 0 24 24"
+            initial={false}
+            animate={navOpen ? "open" : "closed"}
           >
-            resources
+            <motion.line
+              x1="3"
+              y1="6"
+              x2="21"
+              y2="6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              variants={{
+                closed: { rotate: 0, translateY: 0 },
+                open: { rotate: 45, translateY: 6 },
+              }}
+            />
+            <motion.line
+              x1="3"
+              y1="12"
+              x2="21"
+              y2="12"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              variants={{
+                closed: { opacity: 1 },
+                open: { opacity: 0 },
+              }}
+            />
+            <motion.line
+              x1="3"
+              y1="18"
+              x2="21"
+              y2="18"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              variants={{
+                closed: { rotate: 0, translateY: 0 },
+                open: { rotate: -45, translateY: -6 },
+              }}
+            />
+          </motion.svg>
+        </StyledHamburger>
+
+        <StyledNav open={navOpen}>
+          <Link
+            to="/"
+            style={{ color: nav1Color }}
+            onClick={() => {
+              rotateLeft();
+              setNavOpen(false);
+            }}
+          >
+            About me
           </Link>
+          
           <Link
             to="portfolio"
             style={{ color: nav3Color }}
-            onClick={rotateDown}
+            onClick={() => {
+              rotateDown();
+              setNavOpen(false);
+            }}
           >
-            portfolio
+            Portfolio
           </Link>
-          <StyledWheel
+
+          <Link
+            to="resources"
+            style={{ color: nav2Color }}
+            onClick={() => {
+              rotateRight();
+              setNavOpen(false);
+            }}
+          >
+            Resources
+          </Link>
+
+
+          {/* <StyledWheel
             as={motion.div}
             animate={{ rotate: rotation }}
             transition={{ duration: 0.6 }}
             style={{ border: `2px solid ${wheelBorderColor}` }}
           >
-            <StyledPointer
-              style={{ background: `${pointerColor}` }}
-            ></StyledPointer>
+            <StyledPointer style={{ background: `${pointerColor}` }} />
             <img src={switchImage} alt="user" />
-          </StyledWheel>
+          </StyledWheel> */}
         </StyledNav>
       </StyledDiv>
+
       <StyledNavTrigger onClick={handleClick} />
     </StyledWrapper>
   );
