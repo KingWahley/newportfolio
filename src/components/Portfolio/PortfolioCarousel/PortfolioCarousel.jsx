@@ -18,14 +18,13 @@ import "swiper/modules/effect-coverflow/effect-coverflow.scss"; // Coverflow mod
 
 const PortfolioCarousel = () => {
   const [display, setDisplay] = useState({ display: "none" });
+  const [expandedId, setExpandedId] = useState(null);
 
   const normalizeUrl = (url) =>
-  url.startsWith("http://") || url.startsWith("https://")
-    ? url
-    : `https://${url}`;
+    url.startsWith("http://") || url.startsWith("https://")
+      ? url
+      : `https://${url}`;
 
-
-  
   return (
     <Swiper
       // install Swiper modules
@@ -111,7 +110,66 @@ const PortfolioCarousel = () => {
               {isActive ? (
                 <StyledCardDescription>
                   <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p>
+                    {expandedId === project.id
+                      ? project.description
+                      : project.description.slice(0, 120)}
+                    {project.description.length > 120 && (
+                      <button
+                        onClick={() =>
+                          setExpandedId(
+                            expandedId === project.id ? null : project.id
+                          )
+                        }
+                        style={{
+                          marginLeft: "6px",
+                          background: "none",
+                          border: "none",
+                          color: "#2563eb",
+                          cursor: "pointer",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {expandedId === project.id ? "Read less" : "Read more"}
+                      </button>
+                    )}
+                  </p>
+                  <p
+                    style={{
+                      marginTop: "20px",
+                      fontSize: "16px",
+                      flexWrap: "wrap",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Stack
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "5px",
+                      marginTop: "15px",
+                      marginBottom:"20px",
+                      fontSize: "16px",
+                      flexWrap: "wrap",
+                      color: "purple",
+                    }}
+                  >
+                    {project.stack?.map((tech) => (
+                      <p
+                        key={tech}
+                        style={{
+                          margin: 0,
+                          padding: "4px 8px",
+                          background: "#f1f1f1",
+                          borderRadius: "10px",
+                          fontWeight: "300",
+                        }}
+                      >
+                        {tech}
+                      </p>
+                    ))}
+                  </div>
                 </StyledCardDescription>
               ) : null}
             </StyledCard>

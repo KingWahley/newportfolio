@@ -88,7 +88,7 @@ const About = () => {
                         <FontAwesomeIcon icon={faReact} /> React.js • Next.js
                       </p> */}
                       <p>
-                        HTML, CSS, Tailwind CSS, JavaScript, React.js, Next.js
+                        HTML, CSS, Tailwind CSS, JavaScript, React.js, Next.js, Firebase, Supabase
                       </p>
                     </StyledSkill>
                     <StyledSkill>

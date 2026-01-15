@@ -19,8 +19,8 @@ const Portfolio = () => {
       <StyledWrapper>
         <Container removeMargin={true}>
           <Tabs selectedTab={activeTab} onChange={handleChange}>
-            <Tab key={1} color="#DE0F0F" label="Websites" value={1} />
-            <Tab key={2} color="#DE0F0F" label="Web Applications" value={2} />
+            <Tab key={1} color="#DE0F0F" label="My Projects" value={1} />
+            <Tab key={2} color="#DE0F0F" label="" value={2} />
             {/* <Tab
               key={3}
               color="#DE0F0F"
@@ -33,9 +33,9 @@ const Portfolio = () => {
             <TabPanel value={activeTab} selectedIndex={1}>
               <PortfolioCarousel />
             </TabPanel>
-            <TabPanel value={activeTab} selectedIndex={2}>
+            {/* <TabPanel value={activeTab} selectedIndex={2}>
               <ComingSoon />
-            </TabPanel>
+            </TabPanel> */}
             {/* <TabPanel value={activeTab} selectedIndex={3}>
               <ComingSoon />
             </TabPanel>

@@ -29,8 +29,8 @@ export const StyledCardDescription = styled.div`
   p {
     font-family: var(--font-stack-2);
     margin-top: 10px;
-    text-align: center;
-    font-weight: 300;
+    text-align: left;
+    font-weight: 200;
   }
 `;
 
